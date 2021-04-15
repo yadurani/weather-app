@@ -23,8 +23,10 @@ const weather = createSlice({
       state.currentGeo = action.payload
     },
     setCelcius: (state) => {
-      console.log('a')
       state.isCelcius = !state.isCelcius
+    },
+    setCelciusCurrent: (state) => {
+      state.isCelcius = true
     },
   },
   extraReducers: (builder) => {
@@ -46,5 +48,10 @@ const weather = createSlice({
   },
 })
 
-export const { setCoordsCurrent, setSearchCity, setCelcius } = weather.actions
+export const {
+  setCoordsCurrent,
+  setSearchCity,
+  setCelcius,
+  setCelciusCurrent,
+} = weather.actions
 export default weather.reducer

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { MdLocationOn } from 'react-icons/md'
@@ -27,9 +27,10 @@ import { ParagraphLg } from '../Text/Paragraph/styles'
 import { SubtitleLg } from '../Text/Subtitle/styles'
 import CurrentGeo from '../CurrentGeo'
 import Nav from '../Nav'
-import { setSearchCity } from '../../../redux/slice'
+import { setCelciusCurrent, setSearchCity } from '../../../redux/slice'
 import useLocation from '../../../hooks/useLocation'
 import { setConvertDegrees, setNameDegrees } from '../../../helpers/degrees'
+import Alert from '../Alert'
 
 const Aside = ({
   today,
@@ -39,16 +40,25 @@ const Aside = ({
   isCelsius,
   handleCelsius,
 }) => {
+  const [alert, setAlert] = useState(false)
   const { city } = location
   const { geoLocation } = useLocation()
   const convertDegrees = setConvertDegrees(
     intNumber(today?.the_temp),
     isCelsius
   )
+  const showAlert = () => {
+    setAlert(true)
+    setTimeout(() => {
+      setAlert(false)
+    }, 3000)
+  }
 
   const handleSearch = () => {
+    if (!isCelsius) handleCelsius()
     if (!Object.keys(currentGeo).length) {
       geoLocation()
+      showAlert()
     } else {
       searchCity(currentGeo)
     }
@@ -59,6 +69,7 @@ const Aside = ({
       <AsideHead>
         <Nav />
         <CurrentGeo onClick={handleSearch} />
+        {alert && <Alert text="You must allow your location!!" />}
       </AsideHead>
       {today && (
         <>
@@ -100,6 +111,7 @@ const mapToStateToProps = (state) => ({
 
 const mapToDispatchToProps = (dispatch) => ({
   searchCity: (city) => dispatch(setSearchCity(city)),
+  handleCelsius: () => dispatch(setCelciusCurrent()),
 })
 
 export default connect(mapToStateToProps, mapToDispatchToProps)(Aside)
