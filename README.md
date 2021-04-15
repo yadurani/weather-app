@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://yadurani.github.io/weather-app/">
       Demo
     </a>
     <span> | </span>
@@ -39,20 +39,14 @@
 
 ![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
-
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Styles components](https://styled-components.com/)
+- [Styled components](https://styled-components.com/)
 - [Redux Toolkit](https://redux.js.org/redux-toolkit/overview/#:~:text=What%20is%20Redux%20Toolkit%3F%20%23.%20Redux%20Toolkit%20is,common%20Redux%20use%20cases%2C%20including%20store%20setup%2C%20)
+- [API Metaweather](https://www.metaweather.com/api/)
 
 ## Features
 
@@ -68,7 +62,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/yadurani/weather-app.git
 
 # Install dependencies
 $ npm install
